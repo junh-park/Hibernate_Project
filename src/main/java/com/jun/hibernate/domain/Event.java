@@ -1,13 +1,20 @@
 package com.jun.hibernate.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Event {
 	private Long id;
 	private String title;
 	private Date date;
-	
-	public Event() {	}
+
+	public Event() {
+	}
+
+	public Event(String title, Timestamp date) {
+		this.title = title;
+		this.date = date;
+	}
 
 	public Long getId() {
 		return id;
@@ -32,5 +39,28 @@ public class Event {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
+	public String toString() {
+		return new StringBuilder("Event :").append(getTitle()).append(" Date: ").append(getDate()).toString();
+	}
+
+	public boolean equals(Object obj) {
+		if (!(this instanceof Event))
+			return false;
+		if (this == null)
+			return false;
+		if (this == obj)
+			return true;
+		Event other = (Event) obj;
+		return (this.title == other.getTitle()) && (this.id == other.getId());
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.title == null) ? 0 : this.title.hashCode())
+				+ ((this.id == null) ? 0 : this.id.hashCode());
+		return result;
+	}
+
 }
