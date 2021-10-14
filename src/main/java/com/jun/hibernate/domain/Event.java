@@ -2,11 +2,14 @@ package com.jun.hibernate.domain;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Event {
 	private Long id;
 	private String title;
 	private Date date;
+	private Set<Person> participants = new HashSet<Person>();
 
 	public Event() {
 	}
@@ -38,6 +41,14 @@ public class Event {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public Set<Person> getParticipants() {
+		return participants;
+	}
+
+	public void setParticipants(Set<Person> participants) {
+		this.participants = participants;
 	}
 
 	public String toString() {

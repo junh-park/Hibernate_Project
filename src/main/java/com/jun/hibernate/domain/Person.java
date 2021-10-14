@@ -9,6 +9,7 @@ public class Person {
 	private String firstName;
 	private String lastName;
 	private Set<Event> events = new HashSet<Event>();
+	private Set<String> emailAddresses = new HashSet<String>();
 	
 	public Person() {	}
 	
@@ -18,12 +19,25 @@ public class Person {
 		this.lastName = lastName;
 	}
 	
-	public Set<Event> getEvents() {
-		return events;
+	public void addToEvent(Event event) {
+		if (this.events.add(event)) event.getParticipants().add(this);
+	}
+	
+	public void removeFromEvent(Event event) {
+		if (this.getEvents().remove(event)) event.getParticipants().remove(this);
+	}
+	
+	public Set<String> getEmailAddresses() {
+		return emailAddresses;
 	}
 
-	public void setEvents(Set<Event> events) {
-		this.events = events;
+	public void setEmailAddresses(Set<String> emailAddresses) {
+		this.emailAddresses = emailAddresses;
+	}
+	
+	public void removeEmailAddresses() {
+		this.emailAddresses.clear();
+		this.setEmailAddresses(null);
 	}
 
 	public Long getId() {
@@ -57,4 +71,13 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public Set<Event> getEvents() {
+		return events;
+	}
+
+	protected void setEvents(Set<Event> events) {
+		this.events = events;
+	}
+	
 }
