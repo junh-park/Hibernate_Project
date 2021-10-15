@@ -56,12 +56,8 @@ public class Event {
 	}
 
 	public boolean equals(Object obj) {
-		if (!(this instanceof Event))
-			return false;
-		if (this == null)
-			return false;
-		if (this == obj)
-			return true;
+		if (this == null || !(this instanceof Event)) return false;
+		if (this == obj) return true;
 		Event other = (Event) obj;
 		return (this.title == other.getTitle()) && (this.id == other.getId());
 	}
