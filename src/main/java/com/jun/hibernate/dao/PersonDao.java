@@ -30,6 +30,7 @@ public class PersonDao {
 	}
 
 	public List<Person> getAll() {
+
 		session.beginTransaction();
 
 		List<Person> people = session.createQuery("from Person").list();

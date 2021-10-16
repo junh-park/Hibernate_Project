@@ -1,6 +1,7 @@
 package com.jun.hibernate.util;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
@@ -8,6 +9,7 @@ public class HibernateUtil {
 
 	private static SessionFactory buildSessionFactory() {
 		try {
+			new StandardServiceRegistryBuilder().configure()
 			return new Configuration().configure().buildSessionFactory();
 		} catch (Exception e) {
 			System.err.println("Initial SessionFactory creation failed" + e);
